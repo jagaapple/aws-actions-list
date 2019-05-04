@@ -20,10 +20,16 @@
     "type": "git",
     "url": "https://github.com/jagaapple/aws-actions-list.git"
   },
-  "scripts": {},
+  "scripts": {
+    "fix": "eslint --fix ."
+  },
   "config": {},
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "prettier": "^1.17.0"
+  },
   "peerDependencies": {},
   "engines": {},
   "engineStrict": false,
