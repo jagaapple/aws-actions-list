@@ -1,0 +1,32 @@
+{
+  "name": "aws-actions-list",
+  "version": "0.0.1",
+  "description": "A list of all documented AWS actions for IAM Document Policy.",
+  "keywords": [
+    "aws",
+    "iam",
+    "reference"
+  ],
+  "homepage": "https://github.com/jagaapple/aws-actions-list",
+  "bugs": "https://github.com/jagaapple/aws-actions-list/issues",
+  "license": "MIT",
+  "author": "Jaga Apple",
+  "contributors": [],
+  "files": [],
+  "main": "index.js",
+  "bin": "",
+  "man": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jagaapple/aws-actions-list.git"
+  },
+  "scripts": {},
+  "config": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "engines": {},
+  "engineStrict": false,
+  "preferGlobal": false,
+  "private": true
+}
