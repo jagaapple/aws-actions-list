@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+import * as inquirer from "inquirer";
 import ora from "ora";
 
 import { actionsGetter, servicesGetter, outputConverter } from "./interactive-executor/index";
@@ -86,5 +86,6 @@ export const executeInteractively = async () => {
     );
   }
 
+  console.log("\n");
   console.log(outputConverter.convert(outputType, outputActions));
 };

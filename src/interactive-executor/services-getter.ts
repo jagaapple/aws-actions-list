@@ -1,5 +1,5 @@
-import request from "request-promise-native";
-import cheerio from "cheerio";
+import * as request from "request-promise-native";
+import * as cheerio from "cheerio";
 
 const documentURIBasePath = "https://docs.aws.amazon.com/IAM/latest/UserGuide";
 export const listURI = `${documentURIBasePath}/reference_policies_actions-resources-contextkeys.html`;

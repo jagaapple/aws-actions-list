@@ -1,6 +1,6 @@
-import request from "request-promise-native";
-import cheerio from "cheerio";
-import escapeStringRegexp from "escape-string-regexp";
+import * as request from "request-promise-native";
+import * as cheerio from "cheerio";
+import * as escapeStringRegexp from "escape-string-regexp";
 
 import { Service } from "./services-getter";
 
@@ -46,7 +46,8 @@ export const getActions = async (service: Service) => {
 
     const documentURI = (() => {
       const uriAnchorElement = $element.next();
-      const href = uriAnchorElement.attr("href");
+      const href: string | undefined = uriAnchorElement.attr("href");
+      if (href == undefined) return;
 
       return href.trim() || undefined;
     })();

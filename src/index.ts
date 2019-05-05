@@ -1,1 +1,3 @@
-export { executeInteractively } from "./interactive-executor";
+import { executeInteractively } from "./interactive-executor";
+
+executeInteractively();
