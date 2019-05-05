@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-const path = require("path");
 const commander = require("commander");
-const program = require(path.join(process.cwd(), "src"));
-const version = require(path.join(process.cwd(), "package.json")).version;
+const program = require("../src");
+const version = require("../package.json").version;
 
 // When sub command does not exist, show help.
 if (process.argv.length === 2) process.argv.push('--help')
