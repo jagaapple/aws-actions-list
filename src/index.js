@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const inquirer = require("inquirer");
 const { cli } = require("cli-ux");
-const { getActions } = require("./actions-getter");
+const { getActions, getSourceURI } = require("./actions-getter");
 
 const supportedServiceNames = fs
   .readdirSync(path.join(__dirname, "source-definitions"))
@@ -21,7 +21,7 @@ const supportedServiceNames = fs
   ]);
   const sourceDefinition = require(path.join(__dirname, "source-definitions", `${service}.json`));
 
-  cli.action.start(`getting actions (from ${sourceDefinition.url} )`);
+  cli.action.start(`getting actions (from ${getSourceURI(sourceDefinition)} )`);
   const gotActions = await getActions(sourceDefinition);
   cli.action.stop();
 
