@@ -27,7 +27,9 @@
   },
   "config": {},
   "dependencies": {
+    "@oclif/config": "^1.12.12",
     "cheerio": "^1.0.0-rc.3",
+    "cli-ux": "^5.2.1",
     "escape-string-regexp": "^2.0.0",
     "fast-html-parser": "^1.0.1",
     "inquirer": "^6.3.1",

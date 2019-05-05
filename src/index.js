@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const inquirer = require("inquirer");
+const { cli } = require("cli-ux");
 const { getActions } = require("./actions-getter");
 
 const supportedServiceNames = fs
@@ -17,7 +18,10 @@ const supportedServiceNames = fs
     },
   ]);
   const sourceDefinition = require(path.join(__dirname, "source-definitions", `${service}.json`));
+
+  cli.action.start(`getting actions (from ${sourceDefinition.url} )`);
   const gotActions = await getActions(sourceDefinition);
+  cli.action.stop();
 
   const { isNeededChoice } = await inquirer.prompt([
     {
