@@ -15,7 +15,7 @@
   "files": [],
   "main": "",
   "bin": {
-    "aws-actions-list": "aws-actions-list"
+    "aws-actions-list": "bin/aws-actions-list"
   },
   "man": "",
   "repository": {
