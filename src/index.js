@@ -52,5 +52,6 @@ const supportedServiceNames = fs
     });
   }
 
+  console.log("\n");
   console.log(convert(outputType, outputActions));
 })();

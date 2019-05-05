@@ -32,7 +32,8 @@
     "fast-html-parser": "^1.0.1",
     "inquirer": "^6.3.1",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.7"
+    "request-promise-native": "^1.0.7",
+    "yaml": "^1.5.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
