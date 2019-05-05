@@ -1,12 +1,12 @@
 import inquirer from "inquirer";
-import { cli } from "cli-ux";
+import ora from "ora";
 
 import { actionsGetter, servicesGetter, outputConverter } from "./interactive-executor/index";
 
 export const executeInteractively = async () => {
-  cli.action.start("getting services...");
+  const servicesSpinner = ora("getting services...").start();
   const gotServices = await servicesGetter.getServices();
-  cli.action.stop();
+  servicesSpinner.stop();
 
   const { service } = await inquirer.prompt([
     {
@@ -18,9 +18,9 @@ export const executeInteractively = async () => {
     },
   ]);
 
-  cli.action.start("getting actions...");
+  const actionsSpinner = ora("getting actions...").start();
   const gotActions = await actionsGetter.getActions(service);
-  cli.action.stop();
+  actionsSpinner.stop();
 
   const { isNeededChoice }: { isNeededChoice: boolean } = await inquirer.prompt([
     {
