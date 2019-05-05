@@ -31,7 +31,7 @@ const supportedServiceNames = fs
       type: "list",
       name: "outputType",
       message: "Select an output type",
-      choices: ["json", "yaml", "plain"],
+      choices: ["json", "yaml"],
       default: "json",
     },
   ]);
