@@ -19,5 +19,38 @@ const supportedServiceNames = fs
   const sourceDefinition = require(path.join(__dirname, "source-definitions", `${service}.json`));
   const actions = await getActions(sourceDefinition);
 
-  console.log(actions);
+  const { columns, outputType } = await inquirer.prompt([
+    {
+      type: "checkbox",
+      name: "columns",
+      message: "Select columns",
+      choices: Object.keys(actions[0]),
+      default: ["name"],
+    },
+    {
+      type: "list",
+      name: "outputType",
+      message: "Select an output type",
+      choices: ["json", "yaml", "plain"],
+      default: "json",
+    },
+  ]);
+
+  const { convert } = require("./output-converter");
+
+  let outputActions;
+  if (columns.length === 1) {
+    const column = columns[0];
+    outputActions = actions.map((action) => action[column]);
+  } else {
+    outputActions = actions.map((action) => {
+      return columns.reduce((object, column) => {
+        object[column] = action[column];
+
+        return object;
+      }, {});
+    });
+  }
+
+  console.log(convert(outputType, outputActions));
 })();
