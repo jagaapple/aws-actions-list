@@ -1,8 +1,9 @@
-const inquirer = require("inquirer");
-const { cli } = require("cli-ux");
-const { servicesGetter, actionsGetter } = require("./interactive-executor/index");
+import inquirer from "inquirer";
+import { cli } from "cli-ux";
 
-const executeInteractively = async () => {
+import { actionsGetter, servicesGetter, outputConverter } from "./interactive-executor/index";
+
+export const executeInteractively = async () => {
   cli.action.start("getting services...");
   const gotServices = await servicesGetter.getServices();
   cli.action.stop();
@@ -21,7 +22,7 @@ const executeInteractively = async () => {
   const gotActions = await actionsGetter.getActions(service);
   cli.action.stop();
 
-  const { isNeededChoice } = await inquirer.prompt([
+  const { isNeededChoice }: { isNeededChoice: boolean } = await inquirer.prompt([
     {
       type: "confirm",
       name: "isNeededChoice",
@@ -31,7 +32,7 @@ const executeInteractively = async () => {
   ]);
   let actions = gotActions;
   if (isNeededChoice) {
-    const result = await inquirer.prompt([
+    const result: { actions: actionsGetter.Action[] } = await inquirer.prompt([
       {
         type: "checkbox",
         name: "actions",
@@ -48,7 +49,10 @@ const executeInteractively = async () => {
     actions = result.actions;
   }
 
-  const { columns, outputType } = await inquirer.prompt([
+  const {
+    columns,
+    outputType,
+  }: { columns: (keyof actionsGetter.Action)[]; outputType: outputConverter.ConvertableType } = await inquirer.prompt([
     {
       type: "checkbox",
       name: "columns",
@@ -65,24 +69,22 @@ const executeInteractively = async () => {
     },
   ]);
 
-  const { convert } = require("./interactive-executor/output-converter");
-
-  let outputActions;
+  let outputActions: string[] | Record<keyof actionsGetter.Action, any>[];
   if (columns.length === 1) {
     const column = columns[0];
-    outputActions = actions.map((action) => action[column]);
+    outputActions = actions.map((action: actionsGetter.Action) => action[column]!);
   } else {
-    outputActions = actions.map((action) => {
-      return columns.reduce((object, column) => {
-        object[column] = action[column];
+    outputActions = actions.map((action: actionsGetter.Action) =>
+      columns.reduce<Record<keyof actionsGetter.Action, any>>(
+        (object, column) => {
+          object[column] = action[column];
 
-        return object;
-      }, {});
-    });
+          return object;
+        },
+        {} as any,
+      ),
+    );
   }
 
-  console.log("\n");
-  console.log(convert(outputType, outputActions));
+  console.log(outputConverter.convert(outputType, outputActions));
 };
-
-module.exports = { executeInteractively }

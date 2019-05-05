@@ -1,0 +1,25 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "lib": [
+      "es2018",
+      "dom",
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./.dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2015"
+  },
+  "include": [
+    "./src/**/*",
+  ],
+}
