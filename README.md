@@ -1,5 +1,5 @@
 <h1 align="center">aws-actions-list</h1>
-<h4 align="center">📄 A list of all documented AWS actions for IAM Document Policy 📄</h4>
+<h4 align="center">📄 A list of all documented AWS actions for IAM Policy Document 📄</h4>
 
 ```bash
 $ aws-actions-list --service s3
