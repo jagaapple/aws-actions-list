@@ -17,14 +17,40 @@ const supportedServiceNames = fs
     },
   ]);
   const sourceDefinition = require(path.join(__dirname, "source-definitions", `${service}.json`));
-  const actions = await getActions(sourceDefinition);
+  const gotActions = await getActions(sourceDefinition);
+
+  const { isNeededChoice } = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "isNeededChoice",
+      message: "Do you want to choose actions?",
+      default: false,
+    },
+  ]);
+  let actions = gotActions;
+  if (isNeededChoice) {
+    const result = await inquirer.prompt([
+      {
+        type: "checkbox",
+        name: "actions",
+        message: "Select actions",
+        choices: actions.map((action) => {
+          let uri = "";
+          if (action.documentURI != undefined) uri = `  -  ${action.documentURI}`;
+
+          return { name: action.name + uri, value: action, short: action.name };
+        }),
+      },
+    ]);
+    actions = result.actions;
+  }
 
   const { columns, outputType } = await inquirer.prompt([
     {
       type: "checkbox",
       name: "columns",
       message: "Select columns",
-      choices: Object.keys(actions[0]),
+      choices: Object.keys(gotActions[0]),
       default: ["name"],
     },
     {
