@@ -21,6 +21,7 @@
     "url": "https://github.com/jagaapple/aws-actions-list.git"
   },
   "scripts": {
+    "start": "node ./src/index.js",
     "lint": "eslint .",
     "fix": "eslint --fix ."
   },
