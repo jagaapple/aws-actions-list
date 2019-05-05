@@ -21,20 +21,26 @@
     "url": "https://github.com/jagaapple/aws-actions-list.git"
   },
   "scripts": {
+    "start": "node ./src/index.js",
     "lint": "eslint .",
     "fix": "eslint --fix ."
   },
   "config": {},
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
+    "@oclif/config": "^1.12.12",
     "cheerio": "^1.0.0-rc.3",
+    "cli-ux": "^5.2.1",
     "escape-string-regexp": "^2.0.0",
+    "fast-html-parser": "^1.0.1",
+    "inquirer": "^6.3.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "yaml": "^1.5.1"
+  },
+  "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
-    "fast-html-parser": "^1.0.1",
-    "prettier": "^1.17.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7"
+    "prettier": "^1.17.0"
   },
   "peerDependencies": {},
   "engines": {},
