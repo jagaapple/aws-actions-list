@@ -4,7 +4,6 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
-    "declaration": true,
     "lib": [
       "es2018",
       "dom",
