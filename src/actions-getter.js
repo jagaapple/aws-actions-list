@@ -14,12 +14,12 @@ const getActions = async (sourceDefinition) => {
     const escapedRegExpString = escapeStringRegexp(prefix);
 
     const name = (() => {
-      const actionName = $element.attr("id").replace(new RegExp(`^${escapedRegExpString}`), "");
+      const actionName = $element.attr("id").replace(new RegExp(`^${escapedRegExpString}`), "").trim();
       if (actionName.length === 0) return;
       const isCamelCase = actionName[0] === actionName[0].toUpperCase();
       if (!isCamelCase) return;
 
-      return actionName.trim() || undefined;
+      return `${sourceDefinition.actionNamePrefix}:${actionName}`;
     })();
     if (name == undefined) return;
 
