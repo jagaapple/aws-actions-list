@@ -12,7 +12,7 @@ const getActions = async (sourceDefinition) => {
 
   const actions = [];
 
-  $(`a[id^=${prefix}]`).each((_, element) => {
+  $(`a[id^="${prefix}"]`).each((_, element) => {
     const $element = $(element);
     const escapedRegExpString = escapeStringRegexp(prefix);
 
