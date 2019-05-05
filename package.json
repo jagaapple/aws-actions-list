@@ -25,7 +25,9 @@
     "fix": "eslint --fix ."
   },
   "config": {},
-  "dependencies": {},
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.3",
     "escape-string-regexp": "^2.0.0",
