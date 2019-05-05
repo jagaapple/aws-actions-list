@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+const path = require("path");
+const commander = require("commander");
+const program = require(path.join(process.cwd(), "src"));
+const version = require(path.join(process.cwd(), "package.json")).version;
+
+// When sub command does not exist, show help.
+if (process.argv.length === 2) process.argv.push('--help')
+
+commander.version(version, "-v, --version");
+
+commander
+  .command("get")
+  .description("get and output specified AWS actions")
+  .action(program.interactiveExecutor.executeInteractively);
+
+commander.parse(process.argv);

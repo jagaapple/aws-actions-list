@@ -13,8 +13,10 @@
   "author": "Jaga Apple",
   "contributors": [],
   "files": [],
-  "main": "index.js",
-  "bin": "",
+  "main": "",
+  "bin": {
+    "aws-actions-list": "aws-actions-list"
+  },
   "man": "",
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "@oclif/config": "^1.12.12",
     "cheerio": "^1.0.0-rc.3",
     "cli-ux": "^5.2.1",
+    "commander": "^2.20.0",
     "escape-string-regexp": "^2.0.0",
     "fast-html-parser": "^1.0.1",
     "inquirer": "^6.3.1",
