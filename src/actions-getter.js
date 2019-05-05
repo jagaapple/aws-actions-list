@@ -2,14 +2,15 @@ const request = require("request-promise-native");
 const cheerio = require("cheerio");
 const escapeStringRegexp = require("escape-string-regexp");
 
-const getActions = async (sourceDefinition) => {
-  const rawHTML = await request({ method: "get", url: sourceDefinition.url });
+const getActions = async (service) => {
+  const rawHTML = await request({ method: "get", url: service.documentURI });
   const $ = cheerio.load(rawHTML);
-  const prefix = sourceDefinition.anchorElementIdPrefix;
+  const prefix = `${service.code}-`;
 
+  const servicePrefix = $("#main-col-body code.code").first().text();
   const actions = [];
 
-  $(`a[id^=${prefix}]`).each((_, element) => {
+  $(`a[id^="${prefix}"]`).each((_, element) => {
     const $element = $(element);
     const escapedRegExpString = escapeStringRegexp(prefix);
 
@@ -19,7 +20,7 @@ const getActions = async (sourceDefinition) => {
       const isCamelCase = actionName[0] === actionName[0].toUpperCase();
       if (!isCamelCase) return;
 
-      return `${sourceDefinition.actionNamePrefix}:${actionName}`;
+      return `${servicePrefix}:${actionName}`;
     })();
     if (name == undefined) return;
 

@@ -1,28 +1,25 @@
-/*global __dirname*/
-
-const fs = require("fs");
-const path = require("path");
 const inquirer = require("inquirer");
 const { cli } = require("cli-ux");
-const { getActions } = require("./actions-getter");
-
-const supportedServiceNames = fs
-  .readdirSync(path.join(__dirname, "source-definitions"))
-  .map((filename) => filename.split(".")[0]);
+const servicesGetter = require("./services-getter");
+const actionsGetter = require("./actions-getter");
 
 (async () => {
+  cli.action.start("getting services...");
+  const gotServices = await servicesGetter.getServices();
+  cli.action.stop();
+
   const { service } = await inquirer.prompt([
     {
       type: "list",
       name: "service",
       message: "Select a service (the following is supported services)",
-      choices: supportedServiceNames,
+      choices: gotServices.map((service) => ({ name: service.name, value: service, short: service.name })),
+      pageSize: 20,
     },
   ]);
-  const sourceDefinition = require(path.join(__dirname, "source-definitions", `${service}.json`));
 
-  cli.action.start(`getting actions (from ${sourceDefinition.url} )`);
-  const gotActions = await getActions(sourceDefinition);
+  cli.action.start("getting actions...");
+  const gotActions = await actionsGetter.getActions(service);
   cli.action.stop();
 
   const { isNeededChoice } = await inquirer.prompt([
