@@ -44,6 +44,7 @@ const supportedServiceNames = fs
 
           return { name: action.name + uri, value: action, short: action.name };
         }),
+        pageSize: 20,
       },
     ]);
     actions = result.actions;
