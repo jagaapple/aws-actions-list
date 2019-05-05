@@ -2,14 +2,12 @@ const request = require("request-promise-native");
 const cheerio = require("cheerio");
 const escapeStringRegexp = require("escape-string-regexp");
 
-const getSourceURI = (sourceDefinition) =>
-  `https://docs.aws.amazon.com/IAM/latest/UserGuide/list_${sourceDefinition.serviceCode}.html`;
-
-const getActions = async (sourceDefinition) => {
-  const rawHTML = await request({ method: "get", url: getSourceURI(sourceDefinition) });
+const getActions = async (service) => {
+  const rawHTML = await request({ method: "get", url: service.documentURI });
   const $ = cheerio.load(rawHTML);
-  const prefix = `${sourceDefinition.serviceCode}-`;
+  const prefix = `${service.code}-`;
 
+  const servicePrefix = $("#main-col-body code.code").first().text();
   const actions = [];
 
   $(`a[id^="${prefix}"]`).each((_, element) => {
@@ -22,7 +20,7 @@ const getActions = async (sourceDefinition) => {
       const isCamelCase = actionName[0] === actionName[0].toUpperCase();
       if (!isCamelCase) return;
 
-      return `${sourceDefinition.servicePrefix}:${actionName}`;
+      return `${servicePrefix}:${actionName}`;
     })();
     if (name == undefined) return;
 
@@ -49,4 +47,4 @@ const getActions = async (sourceDefinition) => {
   return actions;
 };
 
-module.exports = { getActions, getSourceURI };
+module.exports = { getActions };
