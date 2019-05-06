@@ -24,8 +24,10 @@
   // lots of cpu time on startup, you can exclude large folders to reduce the initial load.
   "files.watcherExclude": {
     "**/.git/objects/**": true,
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
+    "lib/**": true
   },
+
 
 
   // ---------------------------------------------------------------------------------------------------------------------------
