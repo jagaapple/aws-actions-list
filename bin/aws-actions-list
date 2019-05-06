@@ -12,8 +12,12 @@ if (process.argv.length === 2) process.argv.push('--help')
 commander.version(version, "-v, --version");
 
 commander
-  .command("get")
-  .description("get and output specified AWS actions")
+  .command("show")
+  .description("show and output specified AWS actions list")
   .action(program.executeInteractively);
+
+commander
+  .command("*")
+  .action((input) => console.error(`unknown command: ${input}`));
 
 commander.parse(process.argv);
