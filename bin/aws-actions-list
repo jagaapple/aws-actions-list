@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+
+"use strict";
+
 const path = require("path");
 const commander = require("commander");
-
-const basePath = path.resolve(__dirname, "..");
-const program = require(path.join(basePath, "lib", "index.js"));
-const version = require(path.join(basePath, "package.json")).version;
+const program = require("../lib");
+const version = require("../package.json").version;
 
 // When sub command does not exist, show help.
 if (process.argv.length === 2) process.argv.push('--help')
