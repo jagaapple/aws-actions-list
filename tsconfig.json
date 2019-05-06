@@ -10,7 +10,7 @@
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "./.dist",
+    "outDir": "./lib",
     "rootDir": "./src",
     "removeComments": true,
     "sourceMap": false,

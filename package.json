@@ -24,8 +24,8 @@
   },
   "scripts": {
     "start": "node ./src/index.js",
-    "prebuild": "rm -rf ./.dist",
-    "build": "webpack",
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc -p ./tsconfig.json",
     "lint": "eslint ./src/**/*.ts",
     "fix": "eslint --fix ./src/**/*.ts"
   },

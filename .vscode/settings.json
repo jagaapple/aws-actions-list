@@ -25,7 +25,7 @@
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/node_modules/**": true,
-    ".dist/**": true
+    "lib/**": true
   },
 
 

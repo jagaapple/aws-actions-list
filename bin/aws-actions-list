@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const commander = require("commander");
-const program = require("../src");
+const program = require("../lib");
 const version = require("../package.json").version;
 
 // When sub command does not exist, show help.
@@ -11,6 +11,6 @@ commander.version(version, "-v, --version");
 commander
   .command("get")
   .description("get and output specified AWS actions")
-  .action(program.interactiveExecutor.executeInteractively);
+  .action(program.executeInteractively);
 
 commander.parse(process.argv);
