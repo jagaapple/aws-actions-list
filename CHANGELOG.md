@@ -1,4 +1,10 @@
 # Changelog
+## 1.0.3 (2019-05-06)
+### Changes and Fixes
+- Install "js-yaml" as dependencies #18
+- Update version to 1.0.3
+
+
 ## 1.0.2 (2019-05-06)
 ### Changes and Fixes
 - Define published target files #16
