@@ -18,7 +18,10 @@ export const getServices = async () => {
   $(".highlights ul li a").each((_: unknown, element: CheerioElement) => {
     const $element = $(element);
 
-    const name = $element.text().trim();
+    const name = $element
+      .text()
+      .replace(/^(AWS|Amazon)\s*/, "")
+      .trim();
 
     const code = (() => {
       const href = $element.attr("href");
@@ -36,6 +39,13 @@ export const getServices = async () => {
     })();
 
     services.push({ name, code, documentURI });
+  });
+
+  services.sort((prevService: Service, nextService: Service) => {
+    if (prevService.name < nextService.name) return -1;
+    if (prevService.name > nextService.name) return 1;
+
+    return 0;
   });
 
   return services;
