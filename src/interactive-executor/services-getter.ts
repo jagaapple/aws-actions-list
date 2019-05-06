@@ -18,7 +18,10 @@ export const getServices = async () => {
   $(".highlights ul li a").each((_: unknown, element: CheerioElement) => {
     const $element = $(element);
 
-    const name = $element.text().trim();
+    const name = $element
+      .text()
+      .replace(/^(AWS|Amazon)\s*/, "")
+      .trim();
 
     const code = (() => {
       const href = $element.attr("href");
