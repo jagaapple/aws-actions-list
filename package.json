@@ -1,6 +1,6 @@
 {
   "name": "aws-actions-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A list of all documented AWS actions for IAM Policy Document.",
   "keywords": [
     "aws",
@@ -12,7 +12,15 @@
   "license": "MIT",
   "author": "Jaga Apple",
   "contributors": [],
-  "files": [],
+  "files": [
+    "bin",
+    "lib",
+    "docs/summary.gif",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "README.md"
+  ],
   "main": "",
   "bin": {
     "aws-actions-list": "bin/aws-actions-list"
