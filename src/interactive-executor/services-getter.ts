@@ -41,12 +41,5 @@ export const getServices = async () => {
     services.push({ name, code, documentURI });
   });
 
-  services.sort((prevService: Service, nextService: Service) => {
-    if (prevService.name < nextService.name) return -1;
-    if (prevService.name > nextService.name) return 1;
-
-    return 0;
-  });
-
   return services;
 };
