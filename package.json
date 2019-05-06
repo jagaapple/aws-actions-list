@@ -1,6 +1,6 @@
 {
   "name": "aws-actions-list",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A list of all documented AWS actions for IAM Policy Document.",
   "keywords": [
     "aws",
@@ -59,5 +59,5 @@
   },
   "engineStrict": false,
   "preferGlobal": true,
-  "private": true
+  "private": false
 }
