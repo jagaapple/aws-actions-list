@@ -20,6 +20,9 @@ jobs:
       - run:
           name: "Exec linters"
           command: "npm run lint"
+      - run:
+          name: "Build"
+          command: "npm run build"
   node_v8:
     working_directory: "~/repository"
     docker:
@@ -38,6 +41,9 @@ jobs:
       - run:
           name: "Exec linters"
           command: "npm run lint"
+      - run:
+          name: "Build"
+          command: "npm run build"
 workflows:
   version: 2
   build:
