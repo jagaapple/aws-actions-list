@@ -28,3 +28,7 @@ desktop.ini
 node_modules
 npm-debug.log
 yarn-error.log
+
+# Files related to documents.
+docs/*
+!docs/summary.gif
