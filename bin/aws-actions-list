@@ -2,7 +2,6 @@
 
 "use strict";
 
-const path = require("path");
 const commander = require("commander");
 const program = require("../lib");
 const version = require("../package.json").version;
